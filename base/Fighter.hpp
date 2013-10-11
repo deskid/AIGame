@@ -7,7 +7,7 @@
 namespace AIGame {
 
 // status of fighter
-enum /* class */ FightingStatus {idle, attack, forward, backward, attack, flee, dead};
+enum /* class */ FightingStatus {idle, attack, forward, backward, flee, dead};
 
 /**
  * this is The class for fighter. It's the instance of a FighterTemplate.
@@ -15,6 +15,46 @@ enum /* class */ FightingStatus {idle, attack, forward, backward, attack, flee, 
  * AI profile is not presented here.
  */
 class Fighter {
+public:
+	/**
+	 * Initialize fighter from template. With a given name
+	 *
+	 * @param baseType
+	 *		the template of the fighter
+	 * @param Name
+	 *		name of the fighter
+	 * 
+	 */
+	Fighter(const FighterTemplate* baseType, const std::string& Name)
+		:base_type(baseType), name(Name),
+		hp(baseType->hp), phy_att(baseType->phy_att), phy_def(baseType->phy_def),
+		mag_att(baseType->mag_att), mag_def(baseType->mag_def),
+		range(baseType->range), freq(baseType->freq),
+		attack_type(baseType->attack_type),
+		fighting_status(idle), target(0), skill_point(0), exp(0)
+	{
+	}
+
+	/**
+	 * Initialize fighter from saved files. Every attribute shall be the same
+	 *
+	 * @param
+	 *		all necessary variables
+	 * 
+	 */
+	Fighter(const FighterTemplate* baseType, const std::string& Name,
+		hp_type hp, hp_type phy_att, hp_type phy_def,
+		hp_type mag_att, hp_type mag_def, length_unit range, tick_unit freq,
+		AttackType attack_type, FightingStatus fighting_status, Fighter* target, 
+		unsigned skill_point, exp_type exp
+	)
+		:base_type(baseType), name(Name),
+		hp(hp), phy_att(phy_att), phy_def(phy_def), 
+		mag_att(mag_att), mag_def(mag_def), range(range), freq(freq),
+		attack_type(baseType->attack_type), fighting_status(idle), 
+		target(target), skill_point(skill_point), exp(exp)
+	{
+	}
 // getters
 public:
 	hp_type getPhysicalAttack() const { return phy_att; }
@@ -63,8 +103,8 @@ public:
 	// level up rule not presented here
 	void increaseExperience(exp_type value) { exp += value; }
 	void decreaseExperience(exp_type value) { exp -= value; }
-	void increaseSkillPoint(unsigned point) { skill_point += value; }
-	void decreaseSkillPoint(unsigned point) { skill_point -= value; }
+	void increaseSkillPoint(unsigned point) { skill_point += point; }
+	void decreaseSkillPoint(unsigned point) { skill_point -= point; }
 // attribute modification methods
 public:
 	// modify
@@ -83,12 +123,14 @@ private:
 	length_unit   range; // range of attack. 0 for close combat only unit
 	tick_unit     freq;  // frequency of attack.
 	// can not be modified
-	const AttackType attackType;
+	const AttackType attack_type;
 private:
 	FightingStatus fighting_status;
 	Fighter* target; // the enemy I current aimed
 	exp_type exp; // experience
 	unsigned skill_point; // skill points gained when level up
+private:
+	Fighter(const Fighter&);
 }; // Fighter
 
 } // AIGame

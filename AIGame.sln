@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "base", "base\base.vcxproj", "{E4B80385-81B1-4156-907D-C0F73BED1367}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tests", "tests\tests.vcxproj", "{9F4AE46E-BA68-4F0D-ABA9-1EAAA27349B9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E4B80385-81B1-4156-907D-C0F73BED1367} = {E4B80385-81B1-4156-907D-C0F73BED1367}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -13,6 +18,10 @@ Global
 		{E4B80385-81B1-4156-907D-C0F73BED1367}.Debug|Win32.Build.0 = Debug|Win32
 		{E4B80385-81B1-4156-907D-C0F73BED1367}.Release|Win32.ActiveCfg = Release|Win32
 		{E4B80385-81B1-4156-907D-C0F73BED1367}.Release|Win32.Build.0 = Release|Win32
+		{9F4AE46E-BA68-4F0D-ABA9-1EAAA27349B9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9F4AE46E-BA68-4F0D-ABA9-1EAAA27349B9}.Debug|Win32.Build.0 = Debug|Win32
+		{9F4AE46E-BA68-4F0D-ABA9-1EAAA27349B9}.Release|Win32.ActiveCfg = Release|Win32
+		{9F4AE46E-BA68-4F0D-ABA9-1EAAA27349B9}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

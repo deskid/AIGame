@@ -14,11 +14,11 @@ namespace tests
 	public:
 		TEST_CLASS_INITIALIZE(init) {
 			using namespace AIGame;
-			 FighterTemplate tpls[4] = { 
-				{100000, "可怕兽", 102, 20, 30, 40, 10, 20 ,30 , explode, {100001, 100002, 100004, 0}},
-				{100001, "更可怕兽", 20, 20, 30, 40, 10, 20 ,30 , normal, {100004, 0, 0, 0}},
-				{100002, "超级可怕兽", 30, 20, 30, 40, 10, 20 ,30 , penetrate, {100004, 0, 0, 0}},
-				{100004, "最可怕兽", 120, 20, 30, 40, 10, 20 ,30 , beatback, {100001, 100000, 0, 0}}
+			 static FighterTemplate tpls[4] = {
+				{"可怕兽", 102, 20, 30, 40, 10, 20 ,30 , explode, {&tpls[2], &tpls[1], &tpls[3], nullptr}},
+				{"更可怕兽", 20, 20, 30, 40, 10, 20 ,30 , normal, {&tpls[3], nullptr, nullptr, nullptr}},
+				{"超级可怕兽", 30, 20, 30, 40, 10, 20 ,30 , penetrate, {&tpls[3], nullptr, nullptr, nullptr}},
+				{"最可怕兽", 120, 20, 30, 40, 10, 20 ,30 , beatback, {&tpls[1], nullptr, nullptr, nullptr}}
 			};
 
 			tpl = tpls;

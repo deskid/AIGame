@@ -21,13 +21,19 @@
     <ClInclude Include="Fighter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="type_difinition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FighterTemplate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Faction.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterAttribute.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterTemplate.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="type_difinition.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

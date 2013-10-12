@@ -9,6 +9,9 @@ namespace AIGame {
 /**
  * this is the class defines equipments
  * an equipment is an item hold by Fighter to enhance there attributes
+ * <strong>this is a special class. Which holds all different equips in a pool,
+ *         and users only get the pointer to pool, not holding a resource itself!
+ * </strong>
  */
 struct Equipment {
 	id_type id; // id of equipment. auto assigned

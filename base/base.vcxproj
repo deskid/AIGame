@@ -79,6 +79,7 @@
     <ClInclude Include="Fighter.hpp" />
     <ClInclude Include="FighterAttribute.hpp" />
     <ClInclude Include="FighterTemplate.hpp" />
+    <ClInclude Include="Quest.hpp" />
     <ClInclude Include="type_difinition.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

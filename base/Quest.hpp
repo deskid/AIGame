@@ -1,7 +1,12 @@
 #ifndef QUEST_HPP_
 #define QUEST_HPP_
+#include <vector>
 
 namespace AIGame {
+
+// predefined
+class Faction;
+class Fighter;
 
 enum class QuestStatus {
 	unassigned, // not visible to player.
@@ -18,8 +23,12 @@ enum class QuestType {
 };
 
 struct Quest {
+	typedef std::vector<Fighter*> FighterListType;
 	int id; // quest id
-	QuestStatus status; // status of quest
+	QuestStatus            status; // status of quest
+	QuestType              type; // type of quest
+	Faction*               enemy; // target faction
+	FighterListType        fighters; // enemey fighters
 };
 
 }

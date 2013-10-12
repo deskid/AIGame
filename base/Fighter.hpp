@@ -4,6 +4,7 @@
 #include "FighterTemplate.hpp"
 #include <string>
 #include <array>
+#include <memory>
 
 namespace AIGame {
 
@@ -21,7 +22,7 @@ struct FighterTemplate;
 class Fighter {
 public:
 	static const int MAX_EQUIPMENTS = 4; // maximum equipments available
-	typedef std::array<Equipment*, MAX_EQUIPMENTS> EquipmentsType;
+	typedef std::array<std::unique_ptr<Equipment>, MAX_EQUIPMENTS> EquipmentsType;
 public:
 	/**
 	 * Initialize fighter from template. With a given name

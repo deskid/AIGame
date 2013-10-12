@@ -20,6 +20,8 @@ struct FighterTemplate {
 	FighterAttribute  attr; // attributes
 	AttackType        attack_type; // type of attack
 	UpgradesType      upgrades; // fighter template(s) avaliable for upgrade. at most 4.
+	money_type        price; // price of fighter
+
 }; // Fighter Template
 
 } // AIGame

@@ -34,36 +34,19 @@ public:
 	 */
 	Fighter(const FighterTemplate* baseType, const std::string& Name)
 		:base_type(baseType), name(Name),
-		fighting_attr(baseType->fighting_attr), attack_type(baseType->attack_type),
+		fighting_attr(baseType->fighting_attr), living_attr(baseType->living_attr),
+		attack_type(baseType->attack_type),
 		fighting_status(idle), target(0), skill_point(0), exp(0)
 	{
 	}
 
 	/**
-	 * Initialize fighter from saved files. Every attribute shall be the same
-	 * TODO some value not initialized
-	 * 
-	 * @param
-	 *		all necessary variables
+	 * do not call this unless loading from file!
 	 */
-	Fighter(const FighterTemplate* baseType, const std::string& Name,
-		hp_type hp, hp_type phy_att, hp_type phy_def,
-		hp_type mag_att, hp_type mag_def, length_unit range, tick_unit freq,
-		AttackType attack_type, FightingStatus fighting_status, Fighter* target, 
-		unsigned skill_point, exp_type exp
-	)
-		:base_type(baseType), name(Name),
-		attack_type(baseType->attack_type), fighting_status(idle), 
-		target(target), skill_point(skill_point), exp(exp)
-	{
-		fighting_attr.hp      = hp;
-		fighting_attr.phy_att = phy_att;
-		fighting_attr.phy_def = phy_def;
-		fighting_attr.mag_att = mag_att;
-		fighting_attr.mag_def = mag_def;
-		fighting_attr.range   = range;
-		fighting_attr.freq    = freq;
+	Fighter() :base_type(nullptr), attack_type(normal) {
+		// defaul
 	}
+
 // getters
 public:
 	hp_type getPhysicalAttack() const { return fighting_attr.phy_att; }
@@ -186,6 +169,7 @@ private:
 	const FighterTemplate* base_type; // template of the fighter
 	std::string            name; // name of the fighter
 	FightingAttribute      fighting_attr;
+	LivingAttribute        living_attr;
 	// can not be modified
 	const AttackType       attack_type; // type of bullet
 private:

@@ -36,5 +36,11 @@
     <ClInclude Include="type_difinition.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Quest.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Instrument.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

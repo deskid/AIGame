@@ -17,8 +17,9 @@ struct FighterTemplate {
 	static const int MAX_UPGRADES = 4; // maximum number of upgrades available
 	typedef std::array<FighterTemplate*, MAX_UPGRADES> UpgradesType;
 	std::string       name; // name of the figther template
-	FighterAttribute  attr; // attributes
-	AttackType        attack_type; // type of attack
+	FightingAttribute fighting_attr; // attributes used in combat
+	LivingAttribute   living_attr; // attributes used in daily life
+	AttackType        attack_type; // type of attack’Ω∂∑
 	UpgradesType      upgrades; // fighter template(s) avaliable for upgrade. at most 4.
 	money_type        price; // price of fighter
 

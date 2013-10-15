@@ -1,12 +1,15 @@
 #ifndef QUEST_HPP_
 #define QUEST_HPP_
 #include <vector>
+#include <string>
 
 namespace AIGame {
 
 // predefined
 class Faction;
 class Fighter;
+class Equipment;
+class Instrument;
 
 enum class QuestStatus {
 	unassigned, // not visible to player.
@@ -22,13 +25,21 @@ enum class QuestType {
 	side_quest
 };
 
+struct Reward {
+	std::vector<FighterTemplate*> unlock_fighter; // unlock fighter in store
+	std::vector<Equipment*> unlock_equipment; // unlock equipment in store
+	std::vector<Instrument*> unlock_instrument; // unlock instruments in store
+	money_type gold;
+};
+
 struct Quest {
 	typedef std::vector<Fighter*> FighterListType;
-	int id; // quest id
+	std::string            name; // quest name
 	QuestStatus            status; // status of quest
 	QuestType              type; // type of quest
 	Faction*               enemy; // target faction
 	FighterListType        fighters; // enemey fighters
+	Reward                 reward;
 };
 
 }

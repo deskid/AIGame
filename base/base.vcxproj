@@ -79,6 +79,7 @@
     <ClInclude Include="Fighter.hpp" />
     <ClInclude Include="FighterAttribute.hpp" />
     <ClInclude Include="FighterTemplate.hpp" />
+    <ClInclude Include="Instrument.hpp" />
     <ClInclude Include="Quest.hpp" />
     <ClInclude Include="type_difinition.hpp" />
   </ItemGroup>

@@ -34,7 +34,7 @@ public:
 	 */
 	Fighter(const FighterTemplate* baseType, const std::string& Name)
 		:base_type(baseType), name(Name),
-		attr(baseType->attr), attack_type(baseType->attack_type),
+		fighting_attr(baseType->fighting_attr), attack_type(baseType->attack_type),
 		fighting_status(idle), target(0), skill_point(0), exp(0)
 	{
 	}
@@ -56,23 +56,23 @@ public:
 		attack_type(baseType->attack_type), fighting_status(idle), 
 		target(target), skill_point(skill_point), exp(exp)
 	{
-		attr.hp      = hp;
-		attr.phy_att = phy_att;
-		attr.phy_def = phy_def;
-		attr.mag_att = mag_att;
-		attr.mag_def = mag_def;
-		attr.range   = range;
-		attr.freq    = freq;
+		fighting_attr.hp      = hp;
+		fighting_attr.phy_att = phy_att;
+		fighting_attr.phy_def = phy_def;
+		fighting_attr.mag_att = mag_att;
+		fighting_attr.mag_def = mag_def;
+		fighting_attr.range   = range;
+		fighting_attr.freq    = freq;
 	}
 // getters
 public:
-	hp_type getPhysicalAttack() const { return attr.phy_att; }
-	hp_type getPhysicalDefence() const { return attr.phy_def; }
-	hp_type getMagicAttack() const { return attr.mag_att; }
-	hp_type getMagicDefence() const { return attr.mag_def; }
-	length_unit getRange() const { return attr.range; }
-	hp_type getHp() const { return attr.hp; }
-	tick_unit getFrequency() const { return attr.freq; }
+	hp_type getPhysicalAttack() const { return fighting_attr.phy_att; }
+	hp_type getPhysicalDefence() const { return fighting_attr.phy_def; }
+	hp_type getMagicAttack() const { return fighting_attr.mag_att; }
+	hp_type getMagicDefence() const { return fighting_attr.mag_def; }
+	length_unit getRange() const { return fighting_attr.range; }
+	hp_type getHp() const { return fighting_attr.hp; }
+	tick_unit getFrequency() const { return fighting_attr.freq; }
 	const FighterTemplate* getBaseType() const { return base_type; }
 	exp_type getExperience() const { return exp; }
 	const Fighter* getTarget() const { return target; } // might need a non-const version
@@ -87,39 +87,51 @@ public:
 	 *		the value to increase. Could be negtive
 	 */
 	// phy_att
-	void increasePhysicalAttack(hp_type value) { attr.phy_att += value; }
-	void decreasePhysicalAttack(hp_type value) { attr.phy_att -= value; }
+	void increasePhysicalAttack(hp_type value) { fighting_attr.phy_att += value; }
+	void decreasePhysicalAttack(hp_type value) { fighting_attr.phy_att -= value; }
 	// phy_def
-	void decreasePhysicalDefence(hp_type value) { attr.phy_def -= value; }
-	void increasePhysicalDefence(hp_type value) { attr.phy_att += value; }
+	void decreasePhysicalDefence(hp_type value) { fighting_attr.phy_def -= value; }
+	void increasePhysicalDefence(hp_type value) { fighting_attr.phy_att += value; }
 	// mag_att
-	void increaseMagicAttack(hp_type value) { attr.mag_att += value; }
-	void decreaseMagicAttack(hp_type value) { attr.mag_att -= value; }
+	void increaseMagicAttack(hp_type value) { fighting_attr.mag_att += value; }
+	void decreaseMagicAttack(hp_type value) { fighting_attr.mag_att -= value; }
 	// mag_def
-	void decreaseMagicDefence(hp_type value) { attr.mag_def -= value; }
-	void increaseMagicDefence(hp_type value) { attr.mag_def += value; }
+	void decreaseMagicDefence(hp_type value) { fighting_attr.mag_def -= value; }
+	void increaseMagicDefence(hp_type value) { fighting_attr.mag_def += value; }
 	// range
 	void increaseRange(length_unit length) {
-		attr.range += length; if (attr.range < 0) attr.range = 0;
+		fighting_attr.range += length;
+		if (fighting_attr.range < 0) fighting_attr.range = 0;
 	}
 	// implementation shall not be increaseRange(-length), for range length_unit might be an unsigned type
 	void decreaseRange(length_unit length) {
-		attr.range -= length; if (attr.range < 0) attr.range = 0;
+		fighting_attr.range -= length; 
+		if (fighting_attr.range < 0) fighting_attr.range = 0;
 	}
 	// freq
 	void increaseFrequency(tick_unit tick) {
-		attr.freq += tick; if (attr.freq <= 0) attr.freq = 1;
+		fighting_attr.freq += tick; 
+		if (fighting_attr.freq <= 0) fighting_attr.freq = 1;
 	}
 	void decreaseFrequency(tick_unit tick) {
-		attr.freq -= tick; if (attr.freq <= 0) attr.freq = 1;
+		fighting_attr.freq -= tick;
+		if (fighting_attr.freq <= 0) fighting_attr.freq = 1;
 	}
 	// hp
 	void increaseHp(hp_type value) { 
-		attr.hp += value; if (attr.hp <= 0) {attr.hp = 0; modifyStatus(dead);}
+		fighting_attr.hp += value; 
+		if (fighting_attr.hp <= 0) {
+			fighting_attr.hp = 0; 
+			modifyStatus(dead);
+		}
 	}
 
 	void decreaseHp(hp_type value) {
-		attr.hp += value; if (attr.hp <= 0) {attr.hp = 0; modifyStatus(dead);}
+		fighting_attr.hp += value; 
+		if (fighting_attr.hp <= 0) {
+			fighting_attr.hp =
+				0; modifyStatus(dead);
+		}
 	}
 
 	////////////////
@@ -173,7 +185,7 @@ public:
 private:
 	const FighterTemplate* base_type; // template of the fighter
 	std::string            name; // name of the fighter
-	FighterAttribute       attr;
+	FightingAttribute      fighting_attr;
 	// can not be modified
 	const AttackType       attack_type; // type of bullet
 private:

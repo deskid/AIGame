@@ -1,6 +1,7 @@
 #ifndef INSTRUMENT_HPP_
 #define INSTRUMENT_HPP_
 #include "FighterAttribute.hpp"
+#include "util/ProtoInstance.hpp"
 #include <string>
 
 namespace AIGame {
@@ -12,10 +13,12 @@ namespace AIGame {
  *         and users only get the pointer to pool, not holding a resource itself!
  * </strong>
  */
-struct Instrument {
+struct InstrumentPrototype {
 	std::string name; // name of the instrument
 	LivingAttribute attr; // modification made by Instrument to attributes
 }; // Instrument
+
+using Instrument = ProtoInstance<Instrument>;
 
 } // AIGame
 

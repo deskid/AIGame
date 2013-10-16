@@ -2,6 +2,7 @@
 #define EQUIPMENT_HPP_
 
 #include "FighterAttribute.hpp"
+#include "util/ProtoInstance.hpp"
 #include <string>
 
 namespace AIGame {
@@ -13,9 +14,12 @@ namespace AIGame {
  *         and users only get the pointer to pool, not holding a resource itself!
  * </strong>
  */
-struct Equipment {
+struct EquipmentPrototype {
 	std::string name; // name of the equipment
 	FightingAttribute attr; // modification made by Equipment to attributes
 }; // Equipments
+
+using Equipment = ProtoInstance<EquipmentPrototype>;
+
 } // AIGame
 #endif // EQUIPMENT_HPP_

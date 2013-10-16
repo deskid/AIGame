@@ -42,5 +42,11 @@
     <ClInclude Include="Instrument.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EquipmentStore.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemPool.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

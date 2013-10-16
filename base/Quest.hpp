@@ -26,7 +26,7 @@ enum class QuestType {
 };
 
 struct Reward {
-	std::vector<FighterTemplate*> unlock_fighter; // unlock fighter in store
+	std::vector<FighterPrototype*> unlock_fighter; // unlock fighter in store
 	std::vector<Equipment*> unlock_equipment; // unlock equipment in store
 	std::vector<Instrument*> unlock_instrument; // unlock instruments in store
 	money_type gold;

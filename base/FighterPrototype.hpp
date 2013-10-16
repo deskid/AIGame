@@ -1,5 +1,5 @@
-#ifndef FIGHTER_TEMPLATE_HPP_
-#define FIGHTER_TEMPLATE_HPP_
+#ifndef FIGHTER_PROTOTYPE_HPP_
+#define FIGHTER_PROTOTYPE_HPP_
 #include "type_difinition.hpp"
 #include "FighterAttribute.hpp"
 #include <string>
@@ -13,9 +13,9 @@ enum /* class */ AttackType {normal, explode, penetrate, beatback};
  * this is The template of fighter, which appears as individual object.
  * every fighter shall be a instance of one of the templates.
  */
-struct FighterTemplate { 
+struct FighterPrototype { 
 	static const int MAX_UPGRADES = 4; // maximum number of upgrades available
-	typedef std::array<FighterTemplate*, MAX_UPGRADES> UpgradesType;
+	typedef std::array<FighterPrototype*, MAX_UPGRADES> UpgradesType;
 	std::string       name; // name of the figther template
 	FightingAttribute fighting_attr; // attributes used in combat
 	LivingAttribute   living_attr; // attributes used in daily life
@@ -26,4 +26,4 @@ struct FighterTemplate {
 }; // Fighter Template
 
 } // AIGame
-#endif // FIGHTER_TEMPLATE_HPP_
+#endif // FIGHTER_PROTOTYPE_HPP_

@@ -1,7 +1,7 @@
 #ifndef FIGHTER_HPP_
 #define FIGHTER_HPP_
 #include "type_difinition.hpp"
-#include "FighterTemplate.hpp"
+#include "FighterPrototype.hpp"
 #include <string>
 #include <array>
 #include <memory>
@@ -12,17 +12,17 @@ namespace AIGame {
 enum /* class */ FightingStatus {idle, attack, forward, backward, flee, dead};
 
 struct Equipment;
-struct FighterTemplate;
+struct FighterPrototype;
 
 /**
- * this is The class for fighter. It's the instance of a FighterTemplate.
+ * this is The class for fighter. It's the instance of a FighterPrototype.
  *		which appears as individual object.
  * AI profile is not presented here.
  */
 class Fighter {
 public:
 	static const int MAX_EQUIPMENTS = 4; // maximum equipments available
-	typedef std::array<std::unique_ptr<Equipment>, MAX_EQUIPMENTS> EquipmentsType;
+	typedef std::array<Equipment*, MAX_EQUIPMENTS> EquipmentsType;
 public:
 	/**
 	 * Initialize fighter from template. With a given name
@@ -32,7 +32,7 @@ public:
 	 * @param Name
 	 *		name of the fighter
 	 */
-	Fighter(const FighterTemplate* baseType, const std::string& Name)
+	Fighter(const FighterPrototype* baseType, const std::string& Name)
 		:base_type(baseType), name(Name),
 		fighting_attr(baseType->fighting_attr), living_attr(baseType->living_attr),
 		attack_type(baseType->attack_type),
@@ -56,7 +56,7 @@ public:
 	length_unit getRange() const { return fighting_attr.range; }
 	hp_type getHp() const { return fighting_attr.hp; }
 	tick_unit getFrequency() const { return fighting_attr.freq; }
-	const FighterTemplate* getBaseType() const { return base_type; }
+	const FighterPrototype* getBaseType() const { return base_type; }
 	exp_type getExperience() const { return exp; }
 	const Fighter* getTarget() const { return target; } // might need a non-const version
 	FightingStatus getFightingStatus() const { return fighting_status; }
@@ -166,7 +166,7 @@ public:
 	}
 // value directly inherited from Fighter Template
 private:
-	const FighterTemplate* base_type; // template of the fighter
+	const FighterPrototype*base_type; // template of the fighter
 	std::string            name; // name of the fighter
 	FightingAttribute      fighting_attr;
 	LivingAttribute        living_attr;

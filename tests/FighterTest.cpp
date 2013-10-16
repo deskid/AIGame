@@ -9,12 +9,12 @@ namespace tests
 {		
 	TEST_CLASS(FighterTest)
 	{
-		static const AIGame::FighterTemplate* tpl;
+		static const AIGame::FighterPrototype* tpl;
 
 	public:
 		TEST_CLASS_INITIALIZE(init) {
 			using namespace AIGame;
-			 static FighterTemplate tpls[4] = {
+			 static FighterPrototype tpls[4] = {
 				 {"可怕兽", {102, 20, 30, 40, 10, 20 ,30} , {1, 2, 30}, explode, {&tpls[2], &tpls[1], &tpls[3], nullptr}},
 				 {"更可怕兽", {20, 20, 30, 40, 10, 20 ,30} , {4, 6, 0}, normal, {&tpls[3], nullptr, nullptr, nullptr}},
 				 {"超级可怕兽", {30, 20, 30, 40, 10, 20 ,30} , {10, 10, 10}, penetrate, {&tpls[3], nullptr, nullptr, nullptr}},

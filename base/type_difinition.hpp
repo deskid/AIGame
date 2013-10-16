@@ -14,7 +14,6 @@ typedef int          length_unit; // unit of length in combat.
 typedef unsigned     tick_unit; // unit of tick in combat
 typedef unsigned     exp_type; // experience type
 typedef int          money_type; // type of money
-
 } // AIGame
 
 #endif // TYPE_DIFINITION_HPP_

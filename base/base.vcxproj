@@ -80,12 +80,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Equipment.hpp" />
+    <ClInclude Include="FighterPrototype.hpp" />
+    <ClInclude Include="id_object.hpp" />
     <ClInclude Include="ItemPool.hpp" />
     <ClInclude Include="EquipmentStore.hpp" />
     <ClInclude Include="Faction.hpp" />
     <ClInclude Include="Fighter.hpp" />
     <ClInclude Include="FighterAttribute.hpp" />
-    <ClInclude Include="FighterTemplate.hpp" />
     <ClInclude Include="Instrument.hpp" />
     <ClInclude Include="Quest.hpp" />
     <ClInclude Include="type_difinition.hpp" />
@@ -94,6 +95,9 @@
     <ProjectReference Include="..\util\util.vcxproj">
       <Project>{db45c44b-91c0-4e98-b3b0-1f161e9f8e5a}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Faction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

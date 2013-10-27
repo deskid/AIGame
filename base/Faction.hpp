@@ -16,6 +16,7 @@ public:
 	typedef std::list<std::unique_ptr<Fighter>> FighterListType;
 	typedef std::list<Equipment*> EquipmentListType;
 private:
+	id_type           id;
 	std::string       name; // name of the faction
 	QuestListType     avaliable_quests;
 	Quest*            running_quest;

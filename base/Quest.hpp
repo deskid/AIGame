@@ -2,14 +2,16 @@
 #define QUEST_HPP_
 #include <vector>
 #include <string>
+#include "type_difinition.hpp"
+#include "Equipment.hpp"
 
 namespace AIGame {
 
 // predefined
 class Faction;
 class Fighter;
-class Equipment;
 class Instrument;
+struct FighterPrototype;
 
 enum class QuestStatus {
 	unassigned, // not visible to player.

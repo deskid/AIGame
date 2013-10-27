@@ -9,7 +9,7 @@ namespace tests
 {		
 	TEST_CLASS(FighterTest)
 	{
-		static const AIGame::FighterPrototype* tpl;
+		static AIGame::FighterPrototype* tpl;
 
 	public:
 		TEST_CLASS_INITIALIZE(init) {
@@ -33,4 +33,6 @@ namespace tests
 		TEST_CLASS_CLEANUP(cleanup) {
 		}
 	};
+
+	AIGame::FighterPrototype* FighterTest::tpl;
 }

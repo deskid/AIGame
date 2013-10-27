@@ -30,9 +30,6 @@
     <ClInclude Include="FighterAttribute.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FighterTemplate.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="type_difinition.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,5 +45,16 @@
     <ClInclude Include="ItemPool.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="id_object.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterPrototype.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Faction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

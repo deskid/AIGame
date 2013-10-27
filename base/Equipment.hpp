@@ -3,6 +3,7 @@
 
 #include "FighterAttribute.hpp"
 #include "util/ProtoInstance.hpp"
+#include "id_object.hpp"
 #include <string>
 
 namespace AIGame {
@@ -14,12 +15,13 @@ namespace AIGame {
  *         and users only get the pointer to pool, not holding a resource itself!
  * </strong>
  */
-struct EquipmentPrototype {
+struct EquipmentPrototype : public id_object {
+
 	std::string name; // name of the equipment
 	FightingAttribute attr; // modification made by Equipment to attributes
 }; // Equipments
 
-using Equipment = ProtoInstance<EquipmentPrototype>;
+typedef ProtoInstance<EquipmentPrototype> Equipment ;
 
 } // AIGame
 #endif // EQUIPMENT_HPP_

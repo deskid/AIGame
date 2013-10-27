@@ -2,6 +2,7 @@
 #define FIGHTER_HPP_
 #include "type_difinition.hpp"
 #include "FighterPrototype.hpp"
+#include "Equipment.hpp"
 #include <string>
 #include <array>
 #include <memory>
@@ -11,7 +12,6 @@ namespace AIGame {
 // status of fighter
 enum /* class */ FightingStatus {idle, attack, forward, backward, flee, dead};
 
-struct Equipment;
 struct FighterPrototype;
 
 /**

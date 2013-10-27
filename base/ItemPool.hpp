@@ -2,34 +2,78 @@
 #define EQUIPMENT_POOL_HPP
 
 #include "type_difinition.hpp"
-#include "Equipment.hpp"
 #include <memory>
 #include <list>
 #include <algorithm>
 #include <iterator>
 
-class Instrument;
-
 namespace AIGame {
 
 namespace Pool {
 namespace detail {
+	/**
+	 * @see @link {http://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Type_Generator} 
+	 * for detail
+	 */
+	// the container type
 	template <typename T>
-	using container = std::list;
-
+	struct container {
+		typedef std::list<T> type;
+	};
+	// the resource type
 	template <typename T>
-	using rc_type = std::unique_ptr ;
+	struct rc_type {
+		typedef std::unique_ptr<T> type;
+	};
 } // detail
 }
 
+using Pool::detail::rc_type;
+using Pool::detail::container;
+
+/**
+ * this class provides an iterator for ItemPool.
+ * this class makes iterator acts like container<T>::iterator
+ */
 template <typename T>
-class Iterator : public std::iterator<std::input_iterator_tag, rc_type<T>> {
+class Iterator : public 
+	std::iterator<std::input_iterator_tag, typename rc_type<T>::type> {
+// forward typedef
+private:
+	typedef typename rc_type<T>::type rc_type;
+	typedef typename container<typename rc_type>::type container;
 public:
-	Iterator(const container<rc_type<T>>::iterator& rhs);
-	const T& operator->() {
+	Iterator(const typename container::iterator& rhs) {
+		iter = rhs;
+	}
+
+	Iterator& operator = (const typename container::iterator& rhs) {
+		iter = rhs;
+		return *this;
+	}
+
+	const T* operator->() {
+		return iter->get();
+	}
+
+	Iterator& operator++() {
+		++iter;
+		return *this;
+	}
+
+	bool operator ==(const Iterator<T>& rhs) {
+		return iter == rhs.iter;
+	}
+
+	bool operator !=(const Iterator<T>& rhs) {
+		return iter != rhs.iter;
+	}
+
+	const T& operator*() {
+		return *iter;
 	}
 private:
-	container<rc_type<T>>::iterator iter;
+	typename container::iterator iter;
 };
 /**
  * Equipment resource holder, database keeper.
@@ -39,6 +83,11 @@ private:
  */
 template <typename T>
 class ItemPool {
+
+// forward typedef
+private:
+	typedef typename rc_type<T>::type rc_type;
+	typedef typename container<typename rc_type>::type container;
 public:
 	ItemPool() {}
 	// use default copy-ctor
@@ -55,7 +104,7 @@ public:
 	}
 
 	void remove(const T* item) {
-		std::remove_if(equips.begin(), equips.end(), [](const rc_type& t) {
+		std::remove_if(equips.begin(), equips.end(), [](const rc_type<T>::type& t) {
 			if (t == item) return true;
 		});
 	}
@@ -66,12 +115,18 @@ public:
 		}) != equips.last();
 	}
 
-	
+	Iterator<T> begin() {
+		return Iterator<T>(equips.begin());
+	}
+
+	Iterator<T> end() {
+		return Iterator<T>(equips.end());
+	}
+
 private:
-	container<rc_type<T>> equips;
+	typename container equips;
 };
 
-using InstrumentPool = ItemPool<Instrument>;
 }
 
 #endif // EQUIPMENT_POOL_HPP

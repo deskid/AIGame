@@ -7,7 +7,7 @@
 template <typename T>
 class ProtoInstance {
 public:
-	const T& operator->() {  return *proto; }
+	const T* operator->() const {  return proto; }
 public:
 	ProtoInstance(const T* t) :proto(t) { }
 private:

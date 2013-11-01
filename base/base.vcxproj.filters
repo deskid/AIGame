@@ -39,16 +39,16 @@
     <ClInclude Include="Instrument.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EquipmentStore.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemPool.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="id_object.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FighterPrototype.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pools.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemStore.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

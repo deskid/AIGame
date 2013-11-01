@@ -1,7 +1,10 @@
 #include "stdafx.h"
+/*
+
+
 #using <system.dll>
 #include "CppUnitTest.h"
-#include "ItemPool.hpp"
+#include "util/ItemPool.hpp"
 #include "Equipment.hpp"
 #include <iostream>
 
@@ -32,6 +35,7 @@ namespace tests
 			pool.insert(s[0]);
 			pool.insert(s[1]);
 			pool.insert(s[2]);
+			pool.remove(pool.begin());
 			for (auto iter = pool.begin(); iter != pool.end(); ++iter ) {
 				cout << iter->a << "\t" << iter->b << endl;
 				Debug::WriteLine(iter->a);
@@ -42,3 +46,5 @@ namespace tests
 
 	};
 }
+
+*/

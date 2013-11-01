@@ -4,13 +4,13 @@
 #include <string>
 #include "type_difinition.hpp"
 #include "Equipment.hpp"
+#include "Instrument.hpp"
 
 namespace AIGame {
 
 // predefined
 class Faction;
 class Fighter;
-class Instrument;
 struct FighterPrototype;
 
 enum class QuestStatus {
@@ -27,14 +27,17 @@ enum class QuestType {
 	side_quest
 };
 
+/**
+ * rewards to be gained after combat
+ */
 struct Reward {
-	std::vector<FighterPrototype*> unlock_fighter; // unlock fighter in store
-	std::vector<Equipment*> unlock_equipment; // unlock equipment in store
-	std::vector<Instrument*> unlock_instrument; // unlock instruments in store
+	std::vector<FighterPrototype> unlock_fighter; // unlock fighter in store
+	std::vector<EquipmentPrototype> unlock_equipment; // unlock equipment in store
+	std::vector<InstrumentPrototype> unlock_instrument; // unlock instruments in store
 	money_type gold;
 };
 
-struct Quest {
+struct Quest : public id_object {
 	typedef std::vector<Fighter*> FighterListType;
 	std::string            name; // quest name
 	QuestStatus            status; // status of quest

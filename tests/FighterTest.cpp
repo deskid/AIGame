@@ -1,4 +1,5 @@
 #include "stdafx.h"
+/*
 #include "CppUnitTest.h"
 #include "Fighter.hpp"
 #include <string>
@@ -36,3 +37,5 @@ namespace tests
 
 	AIGame::FighterPrototype* FighterTest::tpl;
 }
+
+*/

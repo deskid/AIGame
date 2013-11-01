@@ -82,12 +82,12 @@
     <ClInclude Include="Equipment.hpp" />
     <ClInclude Include="FighterPrototype.hpp" />
     <ClInclude Include="id_object.hpp" />
-    <ClInclude Include="ItemPool.hpp" />
-    <ClInclude Include="EquipmentStore.hpp" />
+    <ClInclude Include="ItemStore.hpp" />
     <ClInclude Include="Faction.hpp" />
     <ClInclude Include="Fighter.hpp" />
     <ClInclude Include="FighterAttribute.hpp" />
     <ClInclude Include="Instrument.hpp" />
+    <ClInclude Include="Pools.hpp" />
     <ClInclude Include="Quest.hpp" />
     <ClInclude Include="type_difinition.hpp" />
   </ItemGroup>

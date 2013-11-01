@@ -18,5 +18,8 @@
     <ClInclude Include="ProtoInstance.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="unique_container.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

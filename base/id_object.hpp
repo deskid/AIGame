@@ -4,9 +4,9 @@
 #include "type_difinition.hpp"
 #include <type_traits>
 
-class id_object;
-
 namespace AIGame {
+
+class id_object;
 
 /**
  * mpl part. Forget it
@@ -28,6 +28,11 @@ public:
 private:
 	id_type id;
 };
+
+template <typename T>
+bool id_is_equal(const T& lhs, const T& rhs) {
+	return lhs.getId() == rhs.getId();
+}
 
 } // AIGame
 

@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProtoInstance.hpp" />
+    <ClInclude Include="unique_container.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DB45C44B-91C0-4E98-B3B0-1F161E9F8E5A}</ProjectGuid>

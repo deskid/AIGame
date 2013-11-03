@@ -3,66 +3,73 @@
 
 #include <vector>
 #include <cassert>
+#include <algorithm>
+#include "base/Fighter.hpp"
 
-using namespace std;
+namespace AIGame {
 
-namespace AIGAME {
-
+namespace detail {
+	static const int maxMapLinkLimit = 4;
+}
 /* The logic definition of map */
 
-static const int maxMapLinkLimit = 4;
-
-class combatLogicMapNode{
-	combatLogicMapNode* neighbourNode[maxMapLinkLimit];
+struct combatLogicMapNode{
+	combatLogicMapNode* neighbourNode[detail::maxMapLinkLimit];
 	Fighter* occupyFighter;
 	int nodeID;
+
 	combatLogicMapNode(int initID){
 		nodeID = initID;
 	}
-}
+};
 
 struct combatGraphMapNode{
-	pair<int, int> nodePosition;
+	std::pair<int, int> nodePosition;
 	// Maybe More
-}
+};
+
 class combatLogicMap{
-	vector<combatLogicMapNode*> mapNode;
-	int cntNode = 0;
+public:
+	typedef combatLogicMapNode Node;
+private:
+	std::vector<Node*> mapNode;
+	static int cntNode; // TODO define it in .cpp file
+public:
 	combatLogicMap(){
 		mapNode.clear();
 	}
 	~combatLogicMap(){
-		for(vector<combatLogicMapNode*>::iterator it = mapNode.begin(); it != mapNode.end(); ++it){
-			delete it;
-		}
+		std::for_each(mapNode.begin(), mapNode.end(), [](Node* node) {
+			delete node;
+		});
 	}
 	Node* addNewNode(){
-		Node* ret = new combatLogicMapNode(cntNode++);
+		Node* ret = new Node(cntNode++);
 		mapNode.push_back(ret);
 		return ret;
 	}
-	void addNewRoad(combatLogicMapNode* sourceNode, combatLogicMapNode* targetNode, int direction){
-		assert(direction >= 0 && direction < 4);
+	void addNewRoad(Node* sourceNode, Node* targetNode, int direction){
+		assert(direction >= 0 && direction < detail::maxMapLinkLimit);
 		sourceNode->neighbourNode[direction] = targetNode;
 	}
-	combatLogicMapNode* findNode(int nodeID){
+	Node* findNode(int nodeID){
 		if(nodeID < 0 || nodeID >= mapNode.size()) return NULL;
 		return mapNode[nodeID];
 	}
 
-	Fighter* senseDirection(combatLogicMapNode* sourceNode, int direction){
-		assert(direction >= 0 && direction < 4);
+	Fighter* senseDirection(Node* sourceNode, int direction){
+		assert(direction >= 0 && direction < detail::maxMapLinkLimit);
 		return sourceNode->neighbourNode[direction]->occupyFighter; // Null means nobody
 	}
 
-	combatLogicMapNode* findNearestFighter(combatLogicMapNode* sourceNode){
+	Node* findNearestFighter(Node* sourceNode){
 
 	}
 
-	vector<Node*> findinDistance(Node* sourceNode){
+	std::vector<Node*> findinDistance(Node* sourceNode){
 
 	}
-}
+};
 
 }
 

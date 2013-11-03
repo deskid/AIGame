@@ -56,7 +56,7 @@ public:
 
 	const item_list_type& list(void) const { return items; }
 private:
-	item_list_type::iterator find(const T& item) {
+	typename item_list_type::iterator find(const T& item) {
 		return std::find_if(items.begin(), items.end(), 
 			[&](item_amount_type& i) {
 				return id_is_equal(std::get<0>(i), item);

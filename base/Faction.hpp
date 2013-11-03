@@ -118,8 +118,8 @@ public:
 		fighters.insert(fighter);
 	}
 
-	void removeFighter(Fighter* fighter) {
-		fighters.remove(*fighter);
+	void removeFighter(FighterListType::iterator fighter) {
+		fighters.erase(fighter);
 	}
 
 	FighterListType& getFighters() {

@@ -37,7 +37,7 @@ public:
 		:base_type(baseType), name(Name),
 		fighting_attr(baseType->fighting_attr), living_attr(baseType->living_attr),
 		attack_type(baseType->attack_type),
-		fighting_status(idle), target(0), skill_point(0), exp(0)
+		fighting_status(FightingStatus::idle), target(0), skill_point(0), exp(0)
 	{
 	}
 
@@ -106,7 +106,7 @@ public:
 		fighting_attr.hp += value; 
 		if (fighting_attr.hp <= 0) {
 			fighting_attr.hp = 0; 
-			modifyStatus(dead);
+			modifyStatus(FightingStatus::dead);
 		}
 	}
 
@@ -114,7 +114,7 @@ public:
 		fighting_attr.hp += value; 
 		if (fighting_attr.hp <= 0) {
 			fighting_attr.hp =
-				0; modifyStatus(dead);
+				0; modifyStatus(FightingStatus::dead);
 		}
 	}
 

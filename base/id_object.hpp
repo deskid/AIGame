@@ -31,7 +31,7 @@ private:
 
 template <typename T>
 bool id_is_equal(const T& lhs, const T& rhs) {
-	return lhs.getId() == rhs.getId();
+	return lhs->getId() == rhs->getId();
 }
 
 } // AIGame

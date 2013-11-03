@@ -18,15 +18,15 @@ public:
 	 * add item to store
 	 * Items are distincted by their id
 	 */
-	void add(const T& equip, int amount) {
+	void add(const T& item, int amount) {
 		if (amount == 0) return;
 		
-		auto iter = find(equip);
+		auto iter = find(item);
 
 		if (iter != items.end()) { // found
 			std::get<1>(*iter) += amount;
 		} else {
-			equips.push_back(item_amount_type(equip, amount));
+			items.push_back(item_amount_type(item, amount));
 		}
 	}
 
@@ -37,29 +37,29 @@ public:
 	 * @return
 	 *		true if selled successfully, otherwise(not enough item) return false
 	 */
-	bool sell(const T& equip, int amount) {
+	bool remove(const T& item, int amount) {
 		if (amount == 0) return true;
 
-		auto iter = find(equip);
+		auto iter = find(item);
 		if (iter != items.end()) { // found
 			int& amt = std::get<1>(*iter);
 			if (amt - amount < 0) return false; // not enough item
 			else {
 				amt -= amount;
 				if (amt == 0) // all items sold out
-					equips.erase(iter); // remove it
+					items.erase(iter); // remove it
 			}
 		}
 
 		return true;
 	}
 
-	const item_list_type& list(void) const { return equips; }
+	const item_list_type& list(void) const { return items; }
 private:
-	item_list_type::iterator find(const T& equip) {
+	item_list_type::iterator find(const T& item) {
 		return std::find_if(items.begin(), items.end(), 
 			[&](item_amount_type& i) {
-				return id_is_equal(std::get<0>(i), equip);
+				return id_is_equal(std::get<0>(i), item);
 			}
 		);
 	}

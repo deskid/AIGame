@@ -279,7 +279,11 @@ public:
      * give ownship to another container, if item is not in container_
      * I dont know what will happen...
      */
-    void giveOwnship(iterator item, type& receiver) {
+	template <template <typename X__, typename XAlloc__>
+				class TContainer__,
+			  typename Alloc__
+			 >
+    void giveOwnship(iterator item, unique_container<T, TContainer__, Alloc__>& receiver) {
         // item must by mime!
         receiver.insert(std::move(*item.raw()));
         erase(item);

@@ -22,7 +22,8 @@ struct FighterPrototype;
 class Fighter {
 public:
 	static const int MAX_EQUIPMENTS = 4; // maximum equipments available
-	typedef std::array<Equipment*, MAX_EQUIPMENTS> EquipmentsType;
+	typedef std::shared_ptr<Equipment> EquipType;
+	typedef std::array<EquipType, MAX_EQUIPMENTS> EquipmentsType;
 public:
 	/**
 	 * Initialize fighter from template. With a given name
@@ -138,14 +139,15 @@ public:
 	 * @return
 	 *		false if add failed
 	 */
-	bool addEquipment(Equipment* equip) {
+	bool addEquipment(Equipment equip) {
 		for (auto& e : equips) {
 			if (e != nullptr) { // slot avaliable, insert
-				e = equip;
+				e = std::make_shared<Equipment>(equip);
 				return true;
 			}
-			return false;
 		}
+
+		return false;
 	}
 	/**
 	 * remove an Equipment
@@ -163,6 +165,32 @@ public:
 	}
 	void clearEquipment(void) {
 		for (auto& e : equips) e = nullptr;
+	}
+	/**
+	 * return true if the fighter could apply more equips
+	 * otherwise return false
+	 */
+	bool hasEquipSlot() const {
+		for (auto& e : equips) {
+			if (e != nullptr) { // slot avaliable, insert
+				return true;
+			}
+		}
+
+		return false;
+	}
+	bool hasEquip(const Equipment& equip) const {
+		return std::find_if(equips.begin(), equips.end(), 
+			[&](const EquipType& iter) {
+				return (*iter)->getId() == equip->getId();
+		}) != equips.end();
+	}
+	const EquipmentsType& getEquips() const {
+		return equips;
+	}
+
+	EquipmentsType& getEquips() {
+		return equips;
 	}
 // value directly inherited from Fighter Template
 private:

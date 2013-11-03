@@ -10,7 +10,7 @@
 namespace AIGame {
 
 // status of fighter
-enum /* class */ FightingStatus {idle, attack, forward, backward, flee, dead};
+enum class FightingStatus {idle, attack, forward, backward, flee, dead};
 
 struct FighterPrototype;
 
@@ -191,6 +191,10 @@ public:
 
 	EquipmentsType& getEquips() {
 		return equips;
+	}
+
+	FightingStatus getStatus() const {
+		return fighting_status;
 	}
 // value directly inherited from Fighter Template
 private:

@@ -3,6 +3,7 @@
 #include "type_difinition.hpp"
 #include "Equipment.hpp"
 #include "Instrument.hpp"
+#include "Fighter.hpp"
 #include "util/unique_container.hpp"
 #include <tuple>
 
@@ -69,6 +70,7 @@ private:
 
 typedef ItemStore<Equipment> EquipmentStore;
 typedef ItemStore<Instrument> InstrumentStore;
+typedef ItemStore<Fighter> FighterStore;
 } // AIGame
 
 #endif // ITEM_STORE_HPP

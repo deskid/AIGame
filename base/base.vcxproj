@@ -82,6 +82,7 @@
     <ClInclude Include="Equipment.hpp" />
     <ClInclude Include="FighterPrototype.hpp" />
     <ClInclude Include="id_object.hpp" />
+    <ClInclude Include="ItemManager.hpp" />
     <ClInclude Include="ItemStore.hpp" />
     <ClInclude Include="Faction.hpp" />
     <ClInclude Include="Fighter.hpp" />

@@ -3,23 +3,19 @@
 
 #include <SDL.h>
 #include "window.h"
-
+#include "TextureManager.h"
 class Game
 {
 private:
 	bool running;
-	SDL_Texture *gBackground, *msg;
-	SDL_Rect pos;
+	int currentFrame;
+	
 public:
 	Game(void):running(true){};
 	~Game(void){};
 
 	// init the SDL resourse 
 	void init(void);
-
-
-	//load media and texture
-	void loadMedia(void);
 
 	// render the textures of the world 
 	void render(void);

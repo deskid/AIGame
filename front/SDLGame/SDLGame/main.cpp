@@ -10,7 +10,6 @@ int main(int argc, char**argv){
 
 	gGame->init();
 
-	gGame->loadMedia();
 
 	while (gGame->isRunning()){
 

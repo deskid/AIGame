@@ -23,14 +23,14 @@ public:
     /**
     *  Draw a SDL_Texture to the screen at dstRect with various other options
     *  @param tex The SDL_Texture to draw
+    *  @param srcRect The source position and width/height to draw of the texture
     *  @param dstRect The destination position and width/height to draw the texture with
-    *  @param clip The clip to apply to the image, if desired
     *  @param angle The rotation angle to apply to the texture, default is 0
     *  @param xPivot The x coordinate of the pivot, relative to (0, 0) being center of dstRect
     *  @param yPivot The y coordinate of the pivot, relative to (0, 0) being center of dstRect
     *  @param flip The flip to apply to the image, default is none
     */
-    static void Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip = NULL,
+    static void Draw(SDL_Texture *tex,SDL_Rect &srcRect , SDL_Rect &dstRect, 
                      float angle = 0.0, int xPivot = 0, int yPivot = 0,
                      SDL_RendererFlip flip = SDL_FLIP_NONE);
 
@@ -39,11 +39,6 @@ public:
     *  @param tex The SDL_Texture to draw
 	*  @param srcRect The source position and width/height to draw of the texture 
     *  @param dstRect The destination position and width/height to draw the texture with
-    *  @param clip The clip to apply to the image, if desired
-    *  @param angle The rotation angle to apply to the texture, default is 0
-    *  @param xPivot The x coordinate of the pivot, relative to (0, 0) being center of dstRect
-    *  @param yPivot The y coordinate of the pivot, relative to (0, 0) being center of dstRect
-    *  @param flip The flip to apply to the image, default is none
     */
     static void Draw(SDL_Texture *tex, SDL_Rect &srcRect,SDL_Rect &dstRect);
 

@@ -46,7 +46,7 @@ void Window::Quit(){
 	TTF_Quit();
 	SDL_Quit();
 }
-void Window::Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip, float angle, 
+void Window::Draw(SDL_Texture *tex,SDL_Rect &srcRect, SDL_Rect &dstRect,  float angle, 
 				  int xPivot, int yPivot, SDL_RendererFlip flip)
 {
 	//Convert pivot pos from relative to object's top-left corner to be relative to its center
@@ -55,7 +55,7 @@ void Window::Draw(SDL_Texture *tex, SDL_Rect &dstRect, SDL_Rect *clip, float ang
 	//SDL expects an SDL_Point as the pivot location
 	SDL_Point pivot = { xPivot, yPivot };
 	//Draw the texture
-	SDL_RenderCopyEx(mRenderer.get(), tex, clip, &dstRect, angle, &pivot, flip);
+	SDL_RenderCopyEx(mRenderer.get(), tex, &srcRect, &dstRect, angle, &pivot, flip);
 }
 void Window::Draw(SDL_Texture *tex, SDL_Rect &srcRect,SDL_Rect &dstRect)
 {

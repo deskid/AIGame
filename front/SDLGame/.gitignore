@@ -1,0 +1,7 @@
+*.sdf
+*.swp
+*.o
+*.obj
+*.user
+*debug/
+ipch/

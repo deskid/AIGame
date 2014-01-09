@@ -1,6 +1,6 @@
 #include "TextureManager.h"
 
-TextureManager* TextureManager::pInstance = 0;
+TextureManager* TextureManager::pInstance = nullptr;
 
 TextureManager::~TextureManager(void)
 {

@@ -16,7 +16,7 @@ private:
 public:
 	static TextureManager* Instance()
 	{
-		if(pInstance == 0)
+		if(pInstance == nullptr)
 		{
 			pInstance = new TextureManager();
 			return pInstance;

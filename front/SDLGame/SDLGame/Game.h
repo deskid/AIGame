@@ -4,14 +4,28 @@
 #include <SDL.h>
 #include "window.h"
 #include "TextureManager.h"
+#include "InputHandler.h"
+#include <vector>
+#include "GameObject.h"
+
 class Game
 {
 private:
 	bool running;
 	int currentFrame;
-	
-public:
+	std::vector<GameObject*> vGameObjects;
 	Game(void):running(true){};
+	static Game* pInstance;
+public:
+	static Game* Instance()
+	{
+		if(pInstance==nullptr)
+		{
+			pInstance = new Game();
+			return pInstance;
+		}
+		return pInstance;
+	}
 	~Game(void){};
 
 	// init the SDL resourse 
@@ -21,7 +35,7 @@ public:
 	void render(void);
 
 	//updata the data of game
-	int updata(void);
+	int update(void);
 
 	// free the resouse 
 	void close(void);
